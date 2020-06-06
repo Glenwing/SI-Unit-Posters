@@ -1,0 +1,215 @@
+% Designed to be compiled with PDFLaTeX. Compile twice when making changes, as some elements of this document require two passes to compile correctly.
+%
+% Copyright © 2020 Glenwing ( https://github.com/Glenwing )
+%
+% SI Unit Posters
+% Version 1.0 (June 6, 2020)
+% Created by Glenwing in June of 2020
+%
+% This LaTeX source code is licensed under the GNU General Public License version 3.0
+% https://www.gnu.org/licenses/gpl-3.0.html
+%
+% Due credit must be given in any usage of this source code, or any modified version or derivative work which incorporates or is based on this source code.
+% In addition, any such derivative works or modified versions of this source code must be made open-source with a GPL license.
+
+\documentclass[a4paper]{article}
+
+% Sets page margins for text (doesn't control black border; see below)
+\usepackage[a4paper,top=4cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+
+
+% Needed for scaling unit symbols to a much larger size than normal
+\usepackage{anyfontsize}
+
+% IBM Plex font
+\usepackage[thin]{plex-sans} % Change "thin" to extralight or light for thicker versions, which may be needed depending on the medium it is being printed on.
+
+% Needed for disabling page color
+\usepackage{xcolor}
+
+% Icons for the Creative Commons license
+\usepackage[scale=5]{ccicons}
+
+% Needed for \href command
+\usepackage{hyperref}
+
+% Disable ligatures which cause "ff" to look strange in words like "difference"
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *}
+
+
+% Convenience macros
+\renewcommand{\,}{\hspace{0.2em}} % Redefines \, (thin space) command to be a slightly wider space than the default definition
+\newcommand{\ccdot}{\hspace{-0.12em}\cdot\hspace{-0.12em}} % Defines a new \cdot command with tighter spacing
+\newcommand{\ttimes}{\hspace{0.2em}\raisebox{0.06em}{$\times$}\hspace{0.2em}} % Defines a new \times command which is slightly raised to be more vertically centered
+\newcommand{\minus}{\raisebox{0.06em}{\small$-$}} % Defines a new \minus command which is slightly raised to be more vertically centered, only for use in superscripts.
+
+
+\newcommand{\ohmtimes}{\includegraphics[height=110pt]{Omega Times New Roman.pdf}} % This is an svg image of capital omega in Times New Roman, because the Computer Modern glyph for omega doesn't look very good when enlarged.
+
+% Creates the black border around each page
+\usepackage{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{tikzpagenodes}
+\newcommand{\border}{\tikz[remember picture,overlay] 
+	%\coordinate (A) at (current page.north east);
+    \draw [black,line width=1.6mm]
+    ($ (current page.south west) + (2cm, 2cm) $) % (2cm, 2cm) controls the left and bottom margin of the border respectively
+    rectangle
+    ($ (current page.north east) - (2cm, 2cm) $) % (2cm, 2cm) controls the right and top margin of the border respectively
+    ;}
+\chead[\border]{\border}
+
+% Set various spacing parameters
+\setlength{\lineskip}{1.2em}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em}
+\setlength{\baselineskip}{0em}
+\linespread{0}
+
+% Defines a macro for creating a unit poster
+\newcommand{\UnitPoster}[3]{
+	\begin{center}
+	~\\%vspace doesn't work when it's the first thing in a paragraph, so this non-breaking space is here just to be first.
+	\vspace{3cm}
+	\fontsize{160pt}{160pt}{\textbf{#1}}\vphantom{\fontsize{160pt}{160pt}{\textbf{dp}}}\\[2cm] % Unit symbol
+	\fontsize{40pt}{40pt}{\plexsans #2}\\% Unit name
+	\vspace{3cm}
+	\fontsize{14pt}{30pt}{\textrm{#3}}% Unit description
+	\end{center}
+}
+
+
+%================ DOCUMENT BEGINS HERE ================%
+
+
+\begin{document}
+\pagenumbering{gobble} % Removes page numbers
+\raggedbottom
+\nopagecolor % Removes page background color to make exporting with transparent background easier.
+
+\thispagestyle{empty}
+
+\begin{center}
+	{\Large \textbf{SI Unit Posters}}\\
+	\large
+	Version 1.0 (June 6, 2020) \\
+	Created by Glenwing in June of 2020\\
+	\url{https://github.com/Glenwing}\\
+	\vspace{1cm}
+	\ccLogo~\ccAttribution~\ccShareAlike
+	\vspace{1cm}
+\end{center}
+
+\setlength\lineskip{0.5em}
+\setlength\parskip{1em}
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International license. It may be shared and distributed freely, and modified or used for derivative works, including for commercial purposes, as long as due credit is given and any derivative works are licensed under these same terms.
+
+\url{http://creativecommons.org/licenses/by-sa/4.0/}
+
+This work was compiled from \LaTeX\ source code. The source code itself is licensed under the GNU General Public License (GPL). Any modifications to the source code must also be made open-source and licensed under GPL.
+
+Some of the text in this work (particularly the description for the weber and lumen) is based on the text of \href{https://en.wikipedia.org/wiki/Main_Page}{\textsl{Wikipedia}} articles with very little modification. The text of Wikipedia is licensed under the CC BY-SA license. Other portions (such as the candela description) are based on the text of the \href{https://www.bipm.org/utils/common/pdf/si-brochure/SI-Brochure-9-EN.pdf}{\textsl{SI Brochure 9th Edition}} with very little modification. The SI Brochure is licensed under the CC BY license.
+
+This work uses the following fontfaces:
+
+\begin{itemize}
+\setlength\itemsep{0.25em}
+\item{\textsl{\href{https://www.ctan.org/tex-archive/fonts/cm/}{Computer Modern}} (Serif) by Donald E. Knuth, licensed under the Knuth License}
+\item{\textsl{\href{https://github.com/IBM/plex}{IBM Plex}} (Thin) by IBM, licensed under the SIL Open Font License}
+\item{\textsl{\href{http://fontpro.com/timeless-font-5159}{Timeless}} by Manfred Klein, a freely-distributed font}
+\item{\textsl{\href{http://fontpro.com/aquiline-two-font-3337}{Aquiline Two}} by Manfred Klein, a freely-distributed font, modified by Glenwing}
+\item{\textsl{\href{https://catalog.monotype.com/font/monotype/times-new-roman/bold}{Times New Roman}} by Monotype, whose proprietary license allows free usage of the font in non-commercial documents and static images}
+\end{itemize}
+
+
+\setlength\lineskip{1.2em}
+\setlength{\parskip}{0em}
+
+\newpage
+
+%================ POSTERS BEGIN HERE ================%
+
+~
+\vspace{2cm}
+
+\begin{center}
+\includegraphics{Le Système International d'Unités Timeless.pdf}
+\end{center}
+
+\vspace{6cm}
+
+\begin{center}
+\includegraphics{A tous les temps, à tous les peuples.pdf}
+\end{center}
+
+\vspace{2mm}
+
+\begin{center}
+\huge\textsl{For all times, for all peoples}
+\end{center}
+
+\newpage
+\UnitPoster{s}{Second}{The span of time that passes during $ 9 \, 192 \, 631 \, 770$\\unperturbed ground-state hyperfine transitions\\of a caesium-133 atom}
+
+\newpage
+\UnitPoster{m}{Metre}{The distance traveled by light in vacuum\\in a timespan of exactly $ 1 / 299 \, 792 \, 458 ~ \rm s $}
+
+\newpage
+\UnitPoster{kg}{Kilogram}{The amount of mass such that the Planck constant $h$\\is exactly equal to $ 6.626 \, 070 \, 15 \ttimes 10^{\minus 34} ~ \rm J \ccdot s ~ (kg \ccdot m^2 \ccdot s^{\minus 1}) $}
+
+\newpage
+\UnitPoster{K}{Kelvin}{The change in temperature which results in a change\\in thermal energy of exactly $ 1.380 \, 649 \ttimes 10^{\minus 23} ~ \rm J $\\and 0~K is the temperature of absolute zero}
+
+\newpage
+\UnitPoster{A}{Ampere}{The movement of electric charge at a rate of exactly\\$ 1/1.162 \, 176 \, 634 \ttimes 10^{19} $ times the elementary charge $e$ per second}
+
+\newpage
+\UnitPoster{cd}{Candela}{The luminous intensity such that the luminous efficacy\\of monochromatic light of frequency $ 540 \ttimes 10^{12} ~ \rm Hz $\\is exactly equal to 683~lm/W ($ \rm cd \ccdot sr \ccdot kg^{\minus 1} \ccdot m^{\minus 2} \ccdot s^{3} $)}
+
+\newpage
+\UnitPoster{mol}{Mole}{A collection of atoms, molecules, or particles\\in the amount of exactly $ 6.022 \, 140 \, 76 \ttimes 10^{23} $}
+
+\newpage
+\UnitPoster{N}{Newton}{The force required to accelerate a 1~kg object\\to a velocity of 1~m/s at a uniform rate in 1~second}
+
+\newpage
+\UnitPoster{Pa}{Pascal}{The pressure applied by 1~N of force acting on a 1~$\rm m^2$ area}
+
+\newpage
+\UnitPoster{J}{Joule}{The energy required to accelerate a 1~kg object\\at 1~$\rm m/s^2$ through a distance of 1~m}
+
+\newpage
+\UnitPoster{W}{Watt}{The transfer of energy at a rate of 1~J/s}
+
+\newpage
+\UnitPoster{C}{Coulomb}{The electric charge of exactly $ 1.162 \, 176 \, 634 \ttimes 10^{19} $ protons}
+
+\newpage
+\UnitPoster{V}{Volt}{The difference in electric potential between two points\\in an electric field which imparts 1~J of energy\\to 1~C of charge moving between the two points}
+
+\newpage
+\UnitPoster{\ohmtimes}{Ohm}{The electrical resistance between two points such that\\a 1~V potential difference produces a 1~A electric current}
+
+\newpage
+\UnitPoster{F}{Farad}{The capacitance between two points such that\\an electric potential difference of 1~V\\results in a buildup of 1~C of stored charge}
+
+\newpage
+\UnitPoster{H}{Henry}{The inductance between two points such that\\an electric current changing at a rate of 1~A/s\\produces an electric potential difference of 1~V}
+
+\newpage
+\UnitPoster{Wb}{Weber}{The magnetic flux that, linking a circuit of one turn,\\produces an electric potential difference of 1~V\\when it is reduced to 0 at a uniform rate in 1~s}
+
+\newpage
+\UnitPoster{T}{Tesla}{The flux density of a magnetic field that applies 1~N of force\\to a 1~C charge moving through the field at 1~m/s}
+
+\newpage
+\UnitPoster{lm}{Lumen}{The concentration of visible light\\passing through a solid angle of 1 steradian\\emitted from a source with a luminous intensity of 1~cd}
+
+\newpage
+\UnitPoster{lx}{Lux}{The concentration of visible light on a surface equal to\\a luminous flux of 1~lumen spread across an area of 1~$\rm m^2$}
+
+
+\end{document}
