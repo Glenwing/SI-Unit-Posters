@@ -12,10 +12,10 @@
 % Due credit must be given in any usage of this source code, or any modified version or derivative work which incorporates or is based on this source code.
 % In addition, any such derivative works or modified versions of this source code must be made open-source with a GPL license.
 
-\documentclass[a4paper]{article}
+\documentclass[letterpaper]{article}
 
 % Sets page margins for text (doesn't control black border; see below)
-\usepackage[a4paper,top=4cm,bottom=3cm,left=3cm,right=3cm]{geometry}
+\usepackage[letterpaper,top=4cm,bottom=3cm,left=3cm,right=3cm]{geometry}
 
 
 % Needed for scaling unit symbols to a much larger size than normal
@@ -72,12 +72,13 @@
 % Defines a macro for creating a unit poster
 \newcommand{\UnitPoster}[3]{
 	\begin{center}
-	~\\%vspace doesn't work when it's the first thing in a paragraph, so this non-breaking space is here just to be first.
+	~\\% vspace doesn't work when it's the first thing in a paragraph, so this non-breaking space is here just to be first.
 	\vspace{3cm}
+	% vphantoms ensure consistent spacing by equalizing the line heights. Otherwise, units without any characters that extend below the baseline, like "g" and "y", would have a slightly shorter gap between the unit name and description due to the difference in letters.
 	\fontsize{160pt}{160pt}{\textbf{#1}}\vphantom{\fontsize{165pt}{165pt}{\textbf{dp}}}\\[2cm] % Unit symbol
 	\fontsize{40pt}{40pt}{\plexsans #2}\vphantom{\fontsize{45pt}{45pt}{\textbf{dp}}}\\% Unit name
 	\vspace{3cm}
-	\fontsize{14pt}{30pt}{\textrm{#3}}% Unit description
+	\vphantom{\fontsize{14pt}{30pt}{\textbf{/$^2$}}}\fontsize{14pt}{30pt}{\textrm{#3}}% Unit description
 	\end{center}
 }
 
@@ -94,8 +95,8 @@
 
 \begin{center}
 	{\Large \textbf{SI Unit Posters}}\\
-	\large
-	Version 1.1 (June 12, 2020) \\
+	\large%
+	Version 1.1 (June 12, 2020)\\
 	Created by Glenwing in June of 2020\\
 	\url{https://github.com/Glenwing/SI-Unit-Posters}\\
 	\vspace{1cm}
@@ -151,26 +152,26 @@ This work uses the following typefaces:
 \end{center}
 
 \newpage
-\UnitPoster{s}{Second}{The span of time that passes during $ 9 \, 192 \, 631 \, 770$\\unperturbed ground state hyperfine transitions\\of a caesium-133 atom}
+\UnitPoster{s}{Second}{The span of time that passes during 9\,192\,631\,770\\unperturbed ground state hyperfine transitions\\of a caesium-133 atom}
 
 \newpage
-\UnitPoster{m}{Metre}{The distance traveled by light in vacuum\\over a time interval of exactly $ 1 / 299 \, 792 \, 458 ~ \rm s $}
+\UnitPoster{m}{Metre}{The distance traveled by light in vacuum\\over a time interval of exactly 1/299\,792\,458~s}
 
 \newpage
-\UnitPoster{kg}{Kilogram}{The amount of mass such that the Planck constant $h$\\is exactly equal to $ 6.626 \, 070 \, 15 \ttimes 10^{\minus 34} ~ \rm J \ccdot s ~ (kg \ccdot m^2 \ccdot s^{\minus 1}) $}
+\UnitPoster{kg}{Kilogram}{The amount of mass such that the Planck constant $h$\\is exactly equal to 6.626\,070\,15$ \ttimes 10^{\minus 34} ~ \rm J \ccdot s ~ (kg \ccdot m^2 \ccdot s^{\minus 1}) $}
 
 \newpage
-\UnitPoster{K}{Kelvin}{The change in temperature which results in a change\\in thermal energy of exactly $ 1.380 \, 649 \ttimes 10^{\minus 23} ~ \rm J $\\and 0~K is the temperature of absolute zero}
+\UnitPoster{K}{Kelvin}{The change in temperature which results in a change\\in thermal energy of exactly 1.380\,649$ \ttimes 10^{\minus 23} $~J\\and 0~K is the temperature of absolute zero}
 
 \newpage
-\UnitPoster{A}{Ampere}{The movement of electric charge at a rate of exactly\\$ 1/1.602 \, 176 \, 634 \ttimes 10^{19} $ times the elementary charge $e$ per second}
+\UnitPoster{A}{Ampere}{The movement of electric charge at a rate of exactly\\1/1.602\,176\,634$ \ttimes 10^{19} $ times the elementary charge $e$ per second}
 
 \newpage
 %\UnitPoster{cd}{Candela}{The luminous intensity such that the luminous efficacy\\of monochromatic light of frequency $ 540 \ttimes 10^{12} ~ \rm Hz $\\is exactly equal to 683~lm/W ($ \rm cd \ccdot sr \ccdot kg^{\minus 1} \ccdot m^{\minus 2} \ccdot s^{3} $)}
 \UnitPoster{cd}{Candela}{The luminous intensity, in a given direction, of a source\\ emitting monochromatic light of frequency $ 540 \ttimes 10^{12} ~ \rm Hz $\\with a radiant intensity of 1/683 W per steradian in that direction}
 
 \newpage
-\UnitPoster{mol}{Mole}{A collection of atoms, molecules, or particles\\in the amount of exactly $ 6.022 \, 140 \, 76 \ttimes 10^{23} $}
+\UnitPoster{mol}{Mole}{A collection of atoms, molecules, or particles\\in the amount of exactly 6.022\,140\,76$ \ttimes 10^{23} $}
 
 \newpage
 \UnitPoster{N}{Newton}{The force required to accelerate a 1~kg object\\to a velocity of 1~m/s at a uniform rate in 1~second}
@@ -179,13 +180,13 @@ This work uses the following typefaces:
 \UnitPoster{Pa}{Pascal}{The pressure applied by 1~N of force acting on a 1~$\rm m^2$ area}
 
 \newpage
-\UnitPoster{J}{Joule}{The energy required to accelerate a 1~kg object\\at 1~$\rm m/s^2$ through a distance of 1~m}
+\UnitPoster{J}{Joule}{The energy required to accelerate a 1~kg object\\at 1~m/$\rm s^2$ through a distance of 1~m}
 
 \newpage
 \UnitPoster{W}{Watt}{The transfer of energy at a rate of 1~J/s}
 
 \newpage
-\UnitPoster{C}{Coulomb}{The electric charge of exactly $ 1/1.602 \, 176 \, 634 \ttimes 10^{19} $ protons}
+\UnitPoster{C}{Coulomb}{The electric charge of exactly 1/1.602\,176\,634$ \ttimes 10^{19} $ protons}
 
 \newpage
 \UnitPoster{V}{Volt}{The difference in electric potential between two points\\in an electric field which imparts 1~J of energy\\to 1~C of charge moving between the two points}
